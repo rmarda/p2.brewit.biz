@@ -1,0 +1,39 @@
+section#feature_area  article div#posts {
+    float:left;
+    width:340px;
+    padding:10px 20px;
+    background:#fff;
+    margin:20px;
+    overflow: auto;
+}
+
+section#feature_area  article h3{
+    margin:20px auto;
+    font-family:Metrophobic;
+    text-align:center;
+}
+
+section#feature_area{
+    border-top:4px solid #f7be84;
+}
+
+section#feature_area article .inner {
+    margin:10px 20px;
+    padding:5px;
+    background:#fff;
+    border:5px solid;
+}
+
+section#feature_area article:nth-child(1) .inner {
+    border-color:#d7dd6f;
+    min-height: 200px;
+}
+
+section#feature_area article p {
+    font-family:'Open Sans';
+    font-weight:300;
+    font-size:1.15em;
+    line-height:1em;
+    text-align:center;
+    color:#616161;
+}
