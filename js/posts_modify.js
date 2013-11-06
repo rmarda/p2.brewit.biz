@@ -1,26 +1,3 @@
-/*$(document).ready(
-    function() {
-
-        var editable = $(".mypost").attr("readonly");
-
-        $( ".editbutton" ).click(function() {
-            var input = $(".mypost");
-
-            if ( input.attr( "readonly" )) {
-                input.removeAttr( "readonly" )
-            } else {
-                input.attr( "readonly", "readonly" );
-            }
-
-            if($(this).text() == "Edit Post")
-                $(this).text("Done");
-            else
-                $(this).text("Edit Post");
-
-            $( "#log" ).html( "Post has been successfully saved to " + input.val() );
-        });
-    })();
-*/
 
 $(document).ready(
     function() {
@@ -48,8 +25,7 @@ $(document).ready(
                     url: '/posts/p_modify',
                     success: function(response) {
                         // Put the results we get back from the ajax receiver into the results div
-                        //$('#results').html(response);
-                        alert("Value passed back from the php file... " + response );
+                        // change the modified date in div
                     },
                     data: {
                         // Pass data to the ajax receiver
@@ -68,6 +44,7 @@ $(document).ready(
 
             var buttonClicked = $(this);
             var sectionClicked = buttonClicked.closest("blockquote");
+            var msgClicked = sectionClicked.closest("div");
             var userpost = sectionClicked.find("textarea");
 
 
@@ -78,9 +55,10 @@ $(document).ready(
                 url: '/posts/p_deletePost',
                 success: function(response) {
                     // Put the results we get back from the ajax receiver into the results div
-                    //$('#results').html(response);
-                    alert("Value passed back from the php file... " + response );
-                    sectionClicked.remove();
+
+                    //alert("Value passed back from the php file... " + response );
+                    // remove time information and the post
+                    msgClicked.remove();
                 },
                 data: {
                     // Pass data to the ajax receiver
@@ -93,15 +71,5 @@ $(document).ready(
 
 
         }); // end delete post
-
-
-        //here
-
-
-
-
-        
-
-
 
     })();

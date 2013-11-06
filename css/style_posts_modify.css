@@ -9,6 +9,11 @@ section#feature_area  article div#modifypost{
     position: relative;
 }
 
+button .editbutton
+{
+    "height:50px;"
+}
+
 ol {
     margin: 0;
     padding: 0;
