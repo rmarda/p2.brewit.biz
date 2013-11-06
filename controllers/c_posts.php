@@ -30,13 +30,11 @@ class posts_controller extends base_controller {
         $_POST['created']  = Time::now();
         $_POST['modified'] = Time::now();
 
-        # Insert
-
+        # Insert post into the database. Insert also sanitizes data.
         DB::instance(DB_NAME)->insert('posts', $_POST);
 
         # Send them back
         Router::redirect("/posts/add/added");
-
 
     }
 
@@ -80,6 +78,8 @@ class posts_controller extends base_controller {
 
     public function modify() {
 
+        // Display posts authored by the user
+
         # Set up the view
         $this->template->content = View::instance('v_posts_modify');
         $this->template->title = "Your Posts";
@@ -114,6 +114,7 @@ class posts_controller extends base_controller {
 
     public function p_modify() {
 
+        // data passed via javascript using ajax.
         $postid = $_POST['postid'];
         $modifedPost = $_POST['modifiedPost'];
 
@@ -121,7 +122,7 @@ class posts_controller extends base_controller {
         $data = Array("content" => $modifedPost, "modified" => $modifiedTime);
         DB::instance(DB_NAME)->update("posts", $data, "WHERE post_id =".$postid );
 
-        //time
+        //report back new modified time so view can display it.
         echo "modified on" .$modifiedTime;
 
     }

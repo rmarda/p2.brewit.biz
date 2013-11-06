@@ -30,7 +30,7 @@
                     </section>
 
                     <?php if(isset($error) && $error == 'errorEmptyField'): ?>
-                        All fields area required.
+                        All fields are required.
                         <br>
                     <?php endif; ?>
 

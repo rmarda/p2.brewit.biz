@@ -55,7 +55,7 @@ class users_controller extends base_controller {
 
         DB::instance(DB_NAME)->insert_row('users', $_POST);
 
-        /* Now that the user has registered successfully, log them in as well */
+        // Now that the user has registered successfully, log them in as well
         $this->loginHelper($_POST);
     }
 
@@ -65,7 +65,7 @@ class users_controller extends base_controller {
         $this->loginHelper($_POST);
     }
 
-    /* This is a utility method for logging in to be used internally
+    /* This is a utility method for logging in. To be used only
      * by class methods, hence private.
      */
     private function loginHelper($inputArr)
@@ -74,6 +74,11 @@ class users_controller extends base_controller {
         $token = DB::instance(DB_NAME)->select_field($q);
         if($token) {
             setcookie('token', $token, strtotime('+1 year'), '/');
+
+            // set last login time
+            $data = Array("last_login" => Time::now());
+            DB::instance(DB_NAME)->update("users", $data, 'WHERE email = "'.$inputArr['email'].'"' );
+
             Router::redirect('/users/profile');
         }
         else {
