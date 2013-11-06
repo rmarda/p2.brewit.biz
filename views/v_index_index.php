@@ -5,7 +5,9 @@
     <article>
         <div class="inner" id="about">
             <h3>Welcome!</h3>
-            <p>Welcome to my Micro Blog. This app enables users to write posts and view posts from other users. Please <span style="color:orange">sign in</span> on the right hand side pane if you are an existing user or <a href='/users/signup' >register here. </a> </p>
+            <p>Welcome to my Micro Blog. This app enables users to write posts and view posts from other users. Please <span style="color:orange">sign in</span> on the right hand side pane if you are an existing user or <a href='/users/signup' >register here. </a> </p><br>
+
+            <p><span style="color:orange">+1 Features: edit post and delete post</span> </p>
 
         </div>
     </article>
