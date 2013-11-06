@@ -31,6 +31,13 @@
                             <label for="password">Password<span> *</span></label>
                             <input type="password" name="password" maxlength="20" />
                         </section>
+                        <?php if(isset($error)): ?>
+                            <div class='note'>
+                                Login failed. Please double check your email and password.
+                            </div>
+                            <br>
+                        <?php endif; ?>
+                        <?php $error = NULL; ?>
                         <section>
                             <input type="submit" value="Submit" />
                         </section>

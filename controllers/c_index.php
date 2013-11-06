@@ -12,7 +12,7 @@ class index_controller extends base_controller {
 	/*-------------------------------------------------------------------------------------------------
 	Accessed via http://localhost/index/index/
 	-------------------------------------------------------------------------------------------------*/
-	public function index() {
+	public function index($error = NULL) {
 		
 		# Any method that loads a view will commonly start with this
 		# First, set the content of the template with a view file
@@ -22,6 +22,8 @@ class index_controller extends base_controller {
 		# Now set the <title> tag
 			$this->template->title = "Nano Blog";
 
+            # Pass data to the view
+            $this->template->content->error = $error;
 
         # Create an array of 1 or many client files to be included in the head
             $client_files_head = Array( '/css/style_index.css' );

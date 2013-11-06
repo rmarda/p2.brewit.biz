@@ -1,18 +1,50 @@
-<?php foreach($users as $user): ?>
+<!--<section id="feature_area">
+    <article id="allusers">
+        <table >
+            <caption>List of all users</caption>
+            <tr>
+                <th scope="col" >Name</th>
+                <th scope="col" >Follow/Unfollow</th>
+            </tr>
 
-<!--Print logged in user's name-->
-<?=$user['first_name']?> <?=$user['last_name']?><br>
+            <?php foreach($users as $user): ?>
+            <tr>
+                <td>
+                    <?=$user['first_name']?> <?=$user['last_name']?>
+                </td>
 
-<!--Show an unfollow link if a connection exists-->
-<?php if(isset($connections[$user['user_id']])): ?>
-    <a href='/posts/unfollow/<?=$user['user_id']?>'>Unfollow</a>
+                <td><?php if(isset($connections[$user['user_id']])): ?>
+                    <a href='/posts/unfollow/<?=$user['user_id']?>'>Unfollow</a>
 
-    <!-- Otherwise, show the follow link -->
-<?php else: ?>
-    <a href='/posts/follow/<?=$user['user_id']?>'>Follow</a>
-<?php endif; ?>
+                    <?php else: ?>
+                    <a href='/posts/follow/<?=$user['user_id']?>'>Follow</a>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+    </article>
+</section>
+-->
 
-<br><br>
 
+<section id="feature_area">
+    <article>
+        <ol>
+            <?php foreach($users as $user): ?>
+                <li class="comment">
+                    <blockquote>
+                        <?=$user['first_name']?> <?=$user['last_name']?>
 
-<?php endforeach ?>
+                        <?php if(isset($connections[$user['user_id']])): ?>
+                            <a href='/posts/unfollow/<?=$user['user_id']?>'>Unfollow</a>
+
+                        <?php else: ?>
+                            <a href='/posts/follow/<?=$user['user_id']?>'>Follow</a>
+                        <?php endif; ?>
+                    </blockquote>
+                </li>
+            <?php endforeach; ?>
+            </ol>
+    </article>
+</section>

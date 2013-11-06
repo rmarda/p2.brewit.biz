@@ -10,10 +10,12 @@ class posts_controller extends base_controller {
         }
     }
 
-    public function add() {
+    public function add($added = NULL) {
 
         $this->template->content = View::instance("v_posts_add");
         $this->template->title = "New Post";
+        # Pass data to the view
+        $this->template->content->added = $added;
         echo $this->template;
 
     }
@@ -32,8 +34,9 @@ class posts_controller extends base_controller {
 
         DB::instance(DB_NAME)->insert('posts', $_POST);
 
-        # Feedback
-        echo "Your post has been added. <a href='/posts/add'> Add Another</a>";
+        # Send them back
+        Router::redirect("/posts/add/added");
+
 
     }
 
@@ -44,7 +47,7 @@ class posts_controller extends base_controller {
         $this->template->title = "Posts";
 
         # Create an array of 1 or many client files to be included in the head
-        $client_files_head = Array( '/css/style_posts.css' );
+        $client_files_head = Array( '/css/style_posts.css', '/css/style_posts_users.css' );
 
         # Use load_client_files to generate the links from the above array
         $this->template->client_files_head = Utils::load_client_files($client_files_head);
@@ -75,10 +78,71 @@ class posts_controller extends base_controller {
 
     }
 
+    public function modify() {
+
+        # Set up the view
+        $this->template->content = View::instance('v_posts_modify');
+        $this->template->title = "Your Posts";
+
+        # Create an array of 1 or many client files to be included in the head
+        $client_files_head = Array( '/css/style_posts.css', '/css/style_posts_users.css' );
+        $client_files_body = Array( '/js/posts_modify.js' );
+
+        # Use load_client_files to generate the links from the above array
+        $this->template->client_files_head = Utils::load_client_files($client_files_head);
+        $this->template->client_files_body = Utils::load_client_files($client_files_body);
+
+        # Build the query
+        $q = 'SELECT
+            posts.post_id,
+            posts.content,
+            posts.created,
+            posts.modified
+            FROM posts
+            WHERE user_id = '.$this->user->user_id;
+
+        # Run the query
+        $posts = DB::instance(DB_NAME)->select_rows($q);
+
+        # Pass data to the View
+        $this->template->content->posts = $posts;
+
+        # Render the View
+        echo $this->template;
+
+    }
+
+    public function p_modify() {
+
+        $postid = $_POST['postid'];
+        $modifedPost = $_POST['modifiedPost'];
+
+        $modifiedTime = Time::now();
+        $data = Array("content" => $modifedPost, "modified" => $modifiedTime);
+        DB::instance(DB_NAME)->update("posts", $data, "WHERE post_id =".$postid );
+
+        //time
+        echo "modified on" .$modifiedTime;
+
+    }
+
+    public function p_deletePost() {
+
+        $postid = $_POST['postid'];
+        DB::instance(DB_NAME)->delete('posts', "WHERE post_id =" .$postid);
+    }
+
+
     public function users() {
 
         $this->template->content = View::instance("v_posts_users");
         $this->template->title = "Users";
+
+        # Create an array of 1 or many client files to be included in the head
+        $client_files_head = Array( '/css/style_posts_users.css' );
+
+        # Use load_client_files to generate the links from the above array
+        $this->template->client_files_head = Utils::load_client_files($client_files_head);
 
         # Build query to get all users.
         $q = 'SELECT * FROM users';

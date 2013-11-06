@@ -44,6 +44,18 @@
                         <label for="password">Password<span> *</span></label>
                         <input type="password" name="password" maxlength="20" />
                     </section>
+                    <?php if(isset($error)): ?>
+                        <div class='note'>
+                            Registration Failed. All fields are required.
+                        </div>
+                        <br>
+                    <?php endif; ?>
+                    <section>
+                        <input type='hidden' name='timezone'>
+                        <script>
+                            $('input[name=timezone]').val(jstz.determine().name());
+                        </script>
+                    </section>
                     <section>
                         <input type="submit" value="Sign up" />
                     </section>

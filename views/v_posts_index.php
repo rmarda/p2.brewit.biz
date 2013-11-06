@@ -1,16 +1,24 @@
+
 <section id="feature_area">
     <article>
-        <div class="inner" id="posts">
-            <?php foreach($posts as $post): ?>
-                <article>
-                    <h1><?=$post['first_name']?> <?=$post['last_name']?> posted:</h1>
+        <ol>
+        <?php foreach($posts as $post): ?>
+
+            <li class="comment">
+                <div class="comment-meta">
+
+                    <h4><?=$post['first_name']?> <?=$post['last_name']?> posted:</h4>
+                    <span><time datetime="<?=Time::display($post['created'],'Y-m-d G:i', $user->timezone)?>">
+                            <?=Time::display($post['created'], '', $user->timezone)?>
+                        </time>
+                    </span>
+                </div>
+                <blockquote>
                     <p><?=$post['content']?></p>
-                    <time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
-                        <?=Time::display($post['created'])?>
-                    </time>
-                </article>
-            <?php endforeach;?>
-        </div>
+                </blockquote>
+            </li>
+        <?php endforeach;?>
+        </ol>
     </article>
 </section>
 
