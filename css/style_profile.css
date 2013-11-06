@@ -1,4 +1,4 @@
-section#feature_area  article div#posts{
+section#feature_area  article div#profile{
     float:none;
     width:820px;
     padding:10px 20px;
@@ -6,6 +6,14 @@ section#feature_area  article div#posts{
     margin-left:auto;
     margin-right:auto;
     font-family:Metrophobic;
+    position: relative;
+}
+
+section#feature_area article .inner {
+    margin:10px 20px;
+    padding:5px;
+    background:#fff;
+    border:5px solid;
     position: relative;
 }
 
@@ -42,7 +50,7 @@ blockquote p {
 blockquote {
     position: relative;
     min-height: 42px;
-    margin: 0 0 0 112px;
+    margin: 20px auto;
     padding: 10px 15px 5px 15px;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
@@ -52,6 +60,7 @@ blockquote {
     background-image: -moz-linear-gradient(hsla(0,0%,100%,.6), hsla(0,0%,100%,0) 30px);
     background-image: -webkit-gradient(linear, 0 0, 0 30, from(hsla(0,0%,100%,.6)), to(hsla(0,0%,100%,0)));
     word-wrap: break-word;
+
 }
 .ie6 blockquote, .ie7 blockquote {
     background: none;
@@ -60,16 +69,4 @@ blockquote {
 }
 .ie8 blockquote {
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99E3F4EE, endColorstr=#99A6DADC)";
-}
-blockquote:after {
-    content: "\00a0";
-    display: block;
-    position: absolute;
-    top: 20px;
-    left: -20px;
-    width: 0;
-    height: 0;
-    border-width: 10px 20px 10px 0;
-    border-style: solid;
-    border-color: transparent hsla(30, 88%, 74%, 1) transparent transparent;
 }

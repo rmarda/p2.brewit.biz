@@ -30,12 +30,12 @@
                     </section>
 
                     <?php if(isset($error) && $error == 'errorEmptyField'): ?>
-                        All fields are required.
+                        <p class="showerror">All fields are required.
                         <br>
                     <?php endif; ?>
 
                     <?php if(isset($error) && $error == 'errorDupEmail'): ?>
-                        An account with this email already exists.
+                        <p class = "showerror">An account with this email already exists.
                         <br>
                     <?php endif; ?>
 

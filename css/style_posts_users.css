@@ -1,71 +1,20 @@
-
-/* Table styles*/
-
-section#feature_area  article#allusers {
-    float:left;
+section#feature_area  article div#profile{
+    float:none;
     width:520px;
     padding:10px 20px;
-    background:#fff;
+    overflow: auto;
+    margin-left:auto;
+    margin-right:auto;
+    font-family:Metrophobic;
+    position: relative;
+}
+
+section#feature_area article .inner {
     margin:10px 20px;
-
-}
-
-table {
-    width:100%;
-    margin:20px auto;
-    border-collapse:collapse;
-    font:16px 'Source Sans Pro', helvetica, arial, sans-serif;
-    font-weight:400;
-    border-bottom:2px solid #d1d8e4;
-    border-left:2px solid #d1d8e4;
-    border-right:2px solid #d1d8e4;
-    overflow: scroll;
-}
-
-caption {
-    box-sizing:border-box;
-    position:relative;
-    width:100%;
-    left:0%;
-    padding:0em 1em;
-    border-top:2px solid #d1d8e4;
-    border-top-left-radius:12px;
-    border-top-right-radius:12px;
-    font:20px 'Source Sans Pro', helvetica, arial, sans-serif;
-    font-weight:600;
-    color:#616161;
-}
-th {
-    font-weight:600;
-    text-align:center;
-    background:-webkit-linear-gradient(left, #fff, #d1d8e4);
-    padding:.25em;
-    color:#616161;
-}
-
-td a {
-    color:inherit;
-    text-decoration:none;
-
-}
-td a:hover {
-    color: darkorange;
-}
-
-td {
-    padding:.2em .5em;
-    color:#616161;
-
-}
-
-tr:nth-child(odd) {
-    background:#DEE1B5;
-}
-tr:nth-child(even) {
+    padding:5px;
     background:#fff;
-}
-td{
-    text-align: center;
+    border:5px solid;
+    position: relative;
 }
 
 ol {
@@ -101,16 +50,17 @@ blockquote p {
 blockquote {
     position: relative;
     min-height: 42px;
-    margin: 0 0 0 112px;
+    margin: auto;
     padding: 10px 15px 5px 15px;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
     border-radius: 20px;
     border-top: 1px solid #fff;
-    background-color: hsla(182,44%,76%,.5);
+    background-color: hsla(30, 88%, 74%, 1);
     background-image: -moz-linear-gradient(hsla(0,0%,100%,.6), hsla(0,0%,100%,0) 30px);
     background-image: -webkit-gradient(linear, 0 0, 0 30, from(hsla(0,0%,100%,.6)), to(hsla(0,0%,100%,0)));
     word-wrap: break-word;
+
 }
 .ie6 blockquote, .ie7 blockquote {
     background: none;
@@ -120,18 +70,3 @@ blockquote {
 .ie8 blockquote {
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99E3F4EE, endColorstr=#99A6DADC)";
 }
-blockquote:after {
-    content: "\00a0";
-    display: block;
-    position: absolute;
-    top: 20px;
-    left: -20px;
-    width: 0;
-    height: 0;
-    border-width: 10px 20px 10px 0;
-    border-style: solid;
-    border-color: transparent hsla(182,44%,76%,.5) transparent transparent;
-}
-
-
-

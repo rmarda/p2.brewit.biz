@@ -45,7 +45,7 @@ class users_controller extends base_controller {
         $q = 'SELECT first_name FROM users WHERE email = "'.$email.'" ';
         $username = DB::instance(DB_NAME)->select_field($q);
         if($username) {
-            //this should be an error.
+            // show error that an account with this email exists.
             Router::redirect("/users/signup/errorDupEmail");
         }
 
@@ -101,6 +101,12 @@ class users_controller extends base_controller {
         {
             Router::redirect('/index');
         }
+
+        # Create an array of 1 or many client files to be included in the head
+        $client_files_head = Array( '/css/style_profile.css' );
+
+        # Use load_client_files to generate the links from the above array
+        $this->template->client_files_head = Utils::load_client_files($client_files_head);
 
         # give a title to the view page
         $this->template->title = "Profile";

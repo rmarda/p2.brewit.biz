@@ -77,10 +77,28 @@ section#feature_area article p {
     clear: both;
 }
 
+.clearfix:after
+{
+    content: ".";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0px;
+}
+
+
 #siginform fieldset p.note {
+
+    color: #1896ff;
+    font-size:0.9em;
+    display:block;
+}
+
+#siginform fieldset p.showerror {
 
     color:red;
     font-size:0.9em;
+    display:block;
 }
 
 #siginform fieldset section label{
@@ -101,4 +119,3 @@ section#feature_area article p {
 
 }
 
-/*end of style for form fields*/

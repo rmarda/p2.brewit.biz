@@ -45,7 +45,7 @@ class posts_controller extends base_controller {
         $this->template->title = "Posts";
 
         # Create an array of 1 or many client files to be included in the head
-        $client_files_head = Array( '/css/style_posts.css', '/css/style_posts_users.css' );
+        $client_files_head = Array( '/css/style_posts.css' );
 
         # Use load_client_files to generate the links from the above array
         $this->template->client_files_head = Utils::load_client_files($client_files_head);
