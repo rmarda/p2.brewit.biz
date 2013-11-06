@@ -1,26 +1,4 @@
-<!--
-<form method='POST' action='/users/p_signup'>
 
-    First Name <br>
-    <input type='text' name='first_name'>
-    <br><br>
-
-    Last Name<br>
-    <input type='text' name='last_name'>
-    <br><br>
-
-    Email<br>
-    <input type='text' name='email'>
-    <br><br>
-
-    Password<br>
-    <input type='password' name='password'>
-    <br><br>
-
-    <input type='submit' value='Sign up'>
-
-</form>
--->
 <section id="feature_area">
     <article>
         <div class="inner" id="registration">
@@ -44,18 +22,23 @@
                         <label for="password">Password<span> *</span></label>
                         <input type="password" name="password" maxlength="20" />
                     </section>
-                    <?php if(isset($error)): ?>
-                        <div class='note'>
-                            Registration Failed. All fields are required.
-                        </div>
+                    <section>
+                    <input type='hidden' name='timezone'>
+                    <script>
+                        $('input[name=timezone]').val(jstz.determine().name());
+                    </script>
+                    </section>
+
+                    <?php if(isset($error) && $error == 'errorEmptyField'): ?>
+                        All fields area required.
                         <br>
                     <?php endif; ?>
-                    <section>
-                        <input type='hidden' name='timezone'>
-                        <script>
-                            $('input[name=timezone]').val(jstz.determine().name());
-                        </script>
-                    </section>
+
+                    <?php if(isset($error) && $error == 'errorDupEmail'): ?>
+                        An account with this email already exists.
+                        <br>
+                    <?php endif; ?>
+
                     <section>
                         <input type="submit" value="Sign up" />
                     </section>

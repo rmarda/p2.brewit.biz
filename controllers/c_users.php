@@ -8,6 +8,7 @@ class users_controller extends base_controller {
 
 
     public function signup($error = NULL) {
+
         # Setup view
         $this->template->content = View::instance('v_users_signup');
         $this->template->title   = "Sign Up";
@@ -34,9 +35,20 @@ class users_controller extends base_controller {
             if( empty( $value ) )
             {
                 //this should be an error.
-                Router::redirect("/users/signup/error");
+                Router::redirect("/users/signup/errorEmptyField");
             }
         }
+
+        //lookup database if an account with this email already exists. If yes, report error.
+
+        $email = $_POST['email'];
+        $q = 'SELECT first_name FROM users WHERE email = "'.$email.'" ';
+        $username = DB::instance(DB_NAME)->select_field($q);
+        if($username) {
+            //this should be an error.
+            Router::redirect("/users/signup/errorDupEmail");
+        }
+
         $_POST['created'] = Time::now();
         $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
         $_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
@@ -65,7 +77,6 @@ class users_controller extends base_controller {
             Router::redirect('/users/profile');
         }
         else {
-            //die("Please <strong>Register</strong> or <strong>Login</strong> at: <a href='/index'>Login</a>");
             Router::redirect("/index/index/error");
         }
     }

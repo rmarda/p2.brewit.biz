@@ -37,7 +37,6 @@
                             </div>
                             <br>
                         <?php endif; ?>
-                        <?php $error = NULL; ?>
                         <section>
                             <input type="submit" value="Submit" />
                         </section>
