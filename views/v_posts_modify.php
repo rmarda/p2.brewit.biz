@@ -1,6 +1,7 @@
 
 <section id="feature_area">
     <article>
+        <div  id="modifypost">
         <ol>
             <?php foreach($posts as $post): ?>
 
@@ -20,7 +21,7 @@
                         </span>
                     </div>
                     <blockquote>
-                        <textarea class = "mypost"  title = <?=$post['post_id']?> readonly="readonly"><?=$post['content']?></textarea>
+                        <textarea class = "mypost"  title = <?=$post['post_id']?> readonly="readonly" name= 'content' style="width: 300px; height: 150px;"><?=$post['content']?></textarea>
                         <button class = "editbutton" id = <?=$count?> >Edit Post</button>
                         <button class = "deletebutton">Delete</button>
 
@@ -28,7 +29,6 @@
                 </li>
             <?php endforeach;?>
         </ol>
+        </div>
     </article>
 </section>
-
-

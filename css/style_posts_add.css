@@ -1,8 +1,8 @@
-section#feature_area  article div#profile{
+section#feature_area  article div#addpost{
     float:none;
-    width:520px;
+    width:820px;
     padding:10px 20px;
-    overflow: auto;
+
     margin-left:auto;
     margin-right:auto;
     font-family:Metrophobic;
@@ -16,7 +16,6 @@ section#feature_area article .inner {
     border:5px solid;
     position: relative;
 }
-
 
 ol {
     margin: 0;
@@ -51,7 +50,7 @@ blockquote p {
 blockquote {
     position: relative;
     min-height: 42px;
-    margin: auto;
+    margin: 20px auto;
     padding: 10px 15px 5px 15px;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
