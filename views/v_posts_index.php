@@ -9,8 +9,8 @@
 
                         <h4><?=$post['first_name']?> <?=$post['last_name']?> posted:</h4>
                         <span>
-                            <time datetime="<?=Time::display($post['created'],'Y-m-d G:i', $user->timezone)?>">
-                                <?=Time::display($post['created'], '', $user->timezone)?>
+                            <time datetime="<?=Time::display($post['modified'],'Y-m-d G:i', $user->timezone)?>">
+                                <?=Time::display($post['modified'], '', $user->timezone)?>
                             </time>
                         </span>
                     </div>

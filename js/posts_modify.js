@@ -9,6 +9,10 @@ $(document).ready(
             var sectionClicked = buttonClicked.closest("blockquote");
             var userpost = sectionClicked.find("textarea");
 
+            var msgClicked = sectionClicked.closest("div");
+            var modifiedSpan = msgClicked.find("span");
+
+
             if($(this).text() == "Edit Post") {
                 $(this).text("Done");
                 userpost.removeAttr( "readonly" );
@@ -26,6 +30,12 @@ $(document).ready(
                     success: function(response) {
                         // Put the results we get back from the ajax receiver into the results div
                         // change the modified date in div
+                        var utcSeconds = response;
+                        var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+                        d.setUTCSeconds(utcSeconds);
+                        msgClicked.find("time:last").html(d.toString());
+
+
                     },
                     data: {
                         // Pass data to the ajax receiver

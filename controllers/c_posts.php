@@ -61,6 +61,7 @@ class posts_controller extends base_controller {
         $q = 'SELECT
             posts.content,
             posts.created,
+            posts.modified,
             posts.user_id AS post_user_id,
             users_users.user_id AS follower_id,
             users.first_name,
@@ -130,7 +131,7 @@ class posts_controller extends base_controller {
         DB::instance(DB_NAME)->update("posts", $data, "WHERE post_id =".$postid );
 
         //report back new modified time so view can display it.
-        echo "modified on" .$modifiedTime;
+        echo $modifiedTime;
 
     }
 
